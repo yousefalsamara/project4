@@ -21,7 +21,7 @@ Route::resource('/product','ProductController');
 Route::get('search','ProductController@search');
 Route::post("getsearch",'ProductController@getsearch');
 
-
+Route::get("gg",'ProductController@gg');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();

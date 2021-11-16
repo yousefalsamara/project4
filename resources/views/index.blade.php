@@ -12,13 +12,25 @@
                         <th scope="col">category</th>
                         <th scope="col">date</th>
                         <th scope="col">image</th>
+                        <th scope="col">edit</th>
+                        <th scope="col">delete</th>
+                        <th scope="col">user_id</th>
+                        <th scope="col">user_name</th>
+
                 </tr>
                 </thead>
-                <tbody>
+                <body>
+{{$u= new \App\User()}}
                 @foreach($Products as $p)
                         <tr>
 
                                 <th>{{$p->id }}</th>
+{{--                                <th>{{$W=$P->user_id--}}
+{{--                                $results = DB::select('select * from users where id = $w', ['id' => 1]);--}}
+
+
+{{--                                }} </th>--}}
+
 
                                 <th>{{$p->product_name}}</th>
 
@@ -29,12 +41,23 @@
                           <form method="get" action="{{ route('product.edit',$p->id) }}" >     <th> <button type="submit" >edit</button></th></form>
                            <form method="post" action="{{route('product.destroy',$p->id)}}" > {{method_field('DELETE')}} @csrf    <th> <button type="submit " >delete</button></th></form>
                                 <br>
+                                <th>{{$p->user_id}}</th>
+
+
+                                <th>
+                                        {{  //  \App\User::find($p->user_id)->name
+                                        $p->user->name
+
+                                         }}
+                                </th>
+
 
                         </tr>
                 @endforeach
 
 
-                </tbody>
+                </body>
+
 
 {{--@foreach($Products as $p)--}}
 {{--        <tr>--}}

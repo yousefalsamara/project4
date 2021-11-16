@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
@@ -66,6 +66,7 @@ class ProductController extends Controller
             $request->file('image')->storeAs('public/storage',$name);
 
         }
+        $y['user_id']=Auth::user()->id;
 
         $y->save();
 
@@ -139,6 +140,8 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $y=Product::find($id)->delete();
+        return redirect('/product');
+
     }
     public function home(){
         return view ('index');
@@ -165,7 +168,12 @@ $name=$request->get('query');
 
 
     }
+    public function gg(){
+        print Auth::user()->id;
+    }
 
 
 
 }
+
+

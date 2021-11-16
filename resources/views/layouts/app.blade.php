@@ -22,8 +22,28 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+    .b{
+        /*background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp7GJTVn2s0QR3NqBYbPio3Ff6fB1wHLWZvAJH3urkLfdRXXAmj5NQGHmk_P7233WZuCQ&usqp=CAU");*/
+        /*background-size: cover;*/
+        /*background-position:center center ;*/
+        /*background-attachment: fixed;*/
+
+        background-image: url('http://executivesecretary.com/wp-content/uploads/2020/04/ES_helpushelpyou.png');
+        /*height: 100vh;*/
+        background-size: cover;
+        background-position:center center;
+        background-attachment: fixed;
+
+        /*-webkit-background-size: cover;*/
+        /*-moz-background-size: cover;*/
+        /*-o-background-size: cover;*/
+        /*background-size: cover;*/
+
+    }
+    </style>
 </head>
-<body>
+<body class="b">
 <br>
 <nav class="navbar navbar-dark bg-dark">
     <!-- Navbar content -->

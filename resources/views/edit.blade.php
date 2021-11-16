@@ -78,7 +78,7 @@
  <br>
      <label class="col-md-4" >Choose category:</label>
 
-     <select  name="category" >
+     <select  name="category"  >
          <option value="food">food</option>
          <option value="clothes">clothes</option>
          <option value="glasses">glasses</option>
@@ -93,7 +93,9 @@
 
       <br>
 
-         <input  type="file"  class=" form-control @error('image') is-invalid @enderror " name="image"  >
+         <input  type="file"  class=" form-control @error('image') is-invalid @enderror " name="image" value="{{$Product->price}}"   >
+
+         <img src="{{asset('/storage/storage/'.$Product->image)}}" width="100px" height="100px"alt="Image">
          <br>
 
          @error('image')

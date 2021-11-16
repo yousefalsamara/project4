@@ -20,6 +20,7 @@ class CreateProductTable extends Migration
             $table->String('category');
             $table->date('Production Date');
             $table->String('image')->nullable();
+            $table->integer('user_id');
             $table->timestamps();
         });
     }
