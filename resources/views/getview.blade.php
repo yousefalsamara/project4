@@ -76,15 +76,21 @@
          @enderror
 </div>
  <br>
-     <label class="col-md-4" >Choose category:</label>
 
-     <select  name="category" >
-         <option value="food">food</option>
-         <option value="clothes">clothes</option>
-         <option value="glasses">glasses</option>
-         <option value="makeup">
-             makeup</option>
-     </select>
+<br>
+
+        <label class="col-md-4" >Choose category_id:</label>
+        <select  name="category_id" >
+            @foreach($cat as $cats)
+
+
+
+                <option  value="{{$cats->id}}">{{$cats->name}}</option>
+
+
+
+            @endforeach
+        </select>
 <br>
 <br>
 

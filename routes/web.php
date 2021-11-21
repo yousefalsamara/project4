@@ -25,4 +25,7 @@ Route::get("gg",'ProductController@gg');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
-
+Route::get("qq",'ProductController@qq');
+Route::get('node','ProductController@node');
+//Route::post('node/store','ProductController@nodestore');
+Route::resource('/noderesource','NodeController');

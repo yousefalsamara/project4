@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Category;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,6 +22,12 @@ class ProductController extends Controller
      */
     public function index()
     {
+
+
+
+
+
+
          $Products=Product::all();
 
         return view("index")->with('Products',$Products);
@@ -40,7 +47,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view("getview");
+        $cat=Category::all();
+
+        return view("getview",compact('cat'));
     }
 
     /**
@@ -67,6 +76,7 @@ class ProductController extends Controller
 
         }
         $y['user_id']=Auth::user()->id;
+
 
         $y->save();
 
@@ -98,9 +108,11 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
+
         $Product=Product::find($id);
+        $cat=Category::all();
         //
-        return view('edit',compact('Product'));
+        return view('edit',compact('Product','cat'));
     }
 
     /**
@@ -157,9 +169,15 @@ class ProductController extends Controller
 //      Print_r($p);
 
 $name=$request->get('query');
-        $Products=Product::where('category','LIKE','%'.$name.'%')->get();
+if($name) {
+    $Categorys = Category::where('name', 'lIKE', '%' . $name . '%')->first();
+
+    $Products = Product::where('category_id', '=', $Categorys->id)->get();
+}
+else
+    $Products = Product::whereNull('category_id')->get();
     //    Print_r($Products);
-        return view("index")->with('Products',$Products);
+    return view("index")->with('Products', $Products);
 
 
 //        $search_text=$_GET('query');
@@ -172,8 +190,23 @@ $name=$request->get('query');
         print Auth::user()->id;
     }
 
+    public function qq(){
+       $cat=Category::all('name');
 
+       return view('qq',compact('cat'));
+    }
+
+
+    public function node(){
+        return view('node');
+    }
+
+
+    public function nodestore(Request $request){
+        $nodes=new Node();
+        $nodes->fill($request->all());
+        $nodes->save();
+
+    }
 
 }
-
-

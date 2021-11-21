@@ -76,16 +76,31 @@
          @enderror
 </div>
  <br>
-     <label class="col-md-4" >Choose category:</label>
 
-     <select  name="category"  >
-         <option value="food">food</option>
-         <option value="clothes">clothes</option>
-         <option value="glasses">glasses</option>
-         <option value="makeup">
-             makeup</option>
-     </select>
 <br>
+
+       <br>
+
+
+
+
+
+        <input type="text" class="form-control-3col" value={{optional(\App\Category::find($Product->category_id))->name}}>
+{{--        <input type="text" class="form-control" value={{$c=\App\Category::find($Product->category_id)}}>--}}
+        <br>
+
+        <label class="col-md-4" >Choose category_id:</label>
+        <select  name="category_id" >
+            @foreach($cat as $cats)
+
+
+
+                <option  value="{{$cats->id}}" @if($cats->id ==$Product->category_id) selected="selected" @endif>{{$cats->name}}</option>
+
+
+
+            @endforeach
+        </select>
 <br>
 
      <div class="col-md-6" >
@@ -93,7 +108,7 @@
 
       <br>
 
-         <input  type="file"  class=" form-control @error('image') is-invalid @enderror " name="image" value="{{$Product->price}}"   >
+         <input  type="file"  class=" form-control @error('image') is-invalid @enderror " name="image" value="{{$Product->image}}"   >
 
          <img src="{{asset('/storage/storage/'.$Product->image)}}" width="100px" height="100px"alt="Image">
          <br>
